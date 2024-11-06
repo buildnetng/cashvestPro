@@ -1,0 +1,12 @@
+# .htaccess example
+
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect all requests that are not actual files or directories to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]
+
+# Disable directory listing
+Options -Indexes
