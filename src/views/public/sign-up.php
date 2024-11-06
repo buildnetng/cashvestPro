@@ -69,8 +69,8 @@
                                                 </button></div>
                                         </form>
                                     </div>
-                                    <div class="card-footer px-md-5"><small>Already have an acocunt?</small>
-                                        <a href="#" class="small font-weight-bold">Sign in</a>
+                                    <div class="card-footer px-md-5"><small>Already have an account?</small>
+                                        <a href="sign-in" class="small font-weight-bold">Sign in</a>
                                     </div>
                                 </div>
                             </div>

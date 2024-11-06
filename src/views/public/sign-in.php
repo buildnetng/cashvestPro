@@ -35,7 +35,7 @@
                                                         <label class="form-control-label">Password</label>
                                                     </div>
                                                     <div class="mb-2">
-                                                        <a href="#!" class="small text-muted text-underline--dashed border-primary">Lost password?</a>
+                                                        <a href="reset-password" class="small text-muted text-underline--dashed border-primary">Lost password?</a>
                                                     </div>
                                                 </div>
                                                 <div class="input-group input-group-merge">
@@ -59,7 +59,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer px-md-5"><small>Not registered?</small>
-                                        <a href="#" class="small font-weight-bold">Create account</a>
+                                        <a href="sign-up" class="small font-weight-bold">Create account</a>
                                     </div>
                                 </div>
                             </div>

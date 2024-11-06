@@ -24,6 +24,7 @@ $routes = [
     'user' => [
         '/' => 'src/views/user/index.php',
         '/home' => 'src/views/user/index.php',
+        '/dashboard' => 'src/views/user/index.php',
         '/analysis' => 'src/views/user/analysis.php',
         '/deposit' => 'src/views/user/deposit.php',
         '/history' => 'src/views/user/history.php',
@@ -40,7 +41,7 @@ $routes = [
     ],
 
     'admin' => [
-        '/dashboard' => 'src/views/admin/index.php',
+        '/admin' => 'src/views/admin/index.php',
         '/users' => 'src/views/admin/users.php',
         '/deposits' => 'src/views/admin/deposits.php',
         '/authentication' => 'src/views/admin/auth/authentication.php',
@@ -49,7 +50,7 @@ $routes = [
         '/settings' => 'src/views/admin/settings.php',
         '/system' => 'src/views/admin/system.php',
         '/send-mail' => 'src/views/admin/send-mail.php',
-        '/profile' => 'src/views/admin/profile.php',
+        '/admin_profile' => 'src/views/admin/profile.php',
     ],
 
     // 404 route for non-existent URLs

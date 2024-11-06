@@ -35,7 +35,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer px-md-5"><small>Not registered?</small>
-                                        <a href="#" class="small font-weight-bold">Create account</a>
+                                        <a href="sign-up" class="small font-weight-bold">Create account</a>
                                     </div>
                                 </div>
                             </div>

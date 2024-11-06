@@ -21,7 +21,7 @@
 						Home
 					</li>
 					<li class="sidebar-item active">
-						<a href="home" class="sidebar-link">
+						<a href="admin" class="sidebar-link">
 							<i class="align-middle" data-lucide="sliders"></i> <span
 								class="align-middle">Dashboard</span>
 						</a>
@@ -42,7 +42,7 @@
 						<ul id="jobs" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
 							<li class="sidebar-item"><a class='sidebar-link' href='deposits'>	Deposits</a>
 							</li>
-							<li class="sidebar-item"><a class='sidebar-link' href='withdrawal'>Withdrawal</a>
+							<li class="sidebar-item"><a class='sidebar-link' href='withdrawals'>Withdrawal</a>
 							</li>
 							<li class="sidebar-item"><a class='sidebar-link' href='tickets'>Tickets</a>
 							</li>
@@ -55,12 +55,6 @@
 					<li class="sidebar-item">
 						<a class='sidebar-link' href='send-mail'>
 							<i class="align-middle" data-lucide="mail"></i> <span class="align-middle">Mailer</span>
-						</a>
-					</li>
-                    
-                    <li class="sidebar-item">
-						<a class='sidebar-link' href='profile'>
-							<i class="align-middle" data-lucide="target"></i> <span class="align-middle">Profile</span>
 						</a>
 					</li>
 
