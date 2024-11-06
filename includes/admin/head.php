@@ -20,11 +20,11 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet">
 
-	<link href="/assets/css/app.css" rel="stylesheet">
+	<link href="/assets_admin/css/app.css" rel="stylesheet">
 
 	<!-- BEGIN SETTINGS -->
 	<!-- Remove this after purchasing -->
-	<script src="/assets/js/settings.js"></script>
+	<script src="/assets_admin/js/settings.js"></script>
 	<!-- END SETTINGS -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3ZYEKLQ68"></script>
 	<script>
