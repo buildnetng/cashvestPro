@@ -1,5 +1,3 @@
-<?php include_once "includes/admin/head.php" ;?>
-
 <body>
 	<div class="wrapper">
 	    <?php include_once "includes/admin/header.php" ;?>
@@ -35,10 +33,7 @@
 					
 				</div>
 			</main>
-			
-			<?php include_once "includes/admin/footer.php" ;?>
-
-
+		
             <div class="modal fade" id="ticket" tabindex="-1" style="display: none;" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -75,10 +70,3 @@
 			</div>
 			
 		</div>
-		
-</body>
-
-
-<!-- Mirrored from appstack.bootlab.io/dashboard-default?theme=default by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Jul 2024 11:07:08 GMT -->
-
-</html>

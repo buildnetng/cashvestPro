@@ -1,6 +1,3 @@
-<?php include_once "includes/admin/head.php" ;?>
-
-
 <body>
 	<div class="wrapper">
 		<?php include_once "includes/admin/header.php" ;?>
@@ -101,10 +98,6 @@
 				</div>
 		</main>
 
-		<?php include_once "includes/admin/footer.php" ;?>
-
-</body>
-
 <script>
 	function updatePassword() {
 		$.ajax({
@@ -140,5 +133,3 @@
 	}
 </script>
 
-
-</html>

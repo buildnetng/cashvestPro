@@ -1,5 +1,3 @@
-<?php include "includes/users/head.php" ?>
-
 <body class="application application-offset">
 
     <div class="container-fluid container-application" >
@@ -74,5 +72,4 @@
                 alert("Copied the referral link: " + copyText.value);
             }
         </script>
-    </div>
-</body>
+  

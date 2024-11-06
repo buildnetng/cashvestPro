@@ -1,5 +1,3 @@
-<?php include_once "includes/admin/head.php" ;?>
-
 <body>
 	<div class="wrapper">
 	    <?php include_once "includes/admin/header.php" ;?>
@@ -248,15 +246,3 @@ google you can set your password once you've logged in.
 					
 				</div>
 			</main>
-			
-			<?php include_once "includes/admin/footer.php" ;?>
-
-
-
-		
-</body>
-
-
-<!-- Mirrored from appstack.bootlab.io/dashboard-default?theme=default by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Jul 2024 11:07:08 GMT -->
-
-</html>

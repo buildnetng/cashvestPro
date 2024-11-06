@@ -1,4 +1,3 @@
-<?php include "includes/users/head.php" ?>
 
 <body class="application application-offset">
 
@@ -202,4 +201,3 @@
             </div>
         </div>
     </div>
-    <?php include "includes/users/footer.php" ?>

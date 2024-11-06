@@ -1,5 +1,3 @@
-<?php include "includes/users/head.php" ?>
-
 <body class="application application-offset">
    
     <div class="container-fluid container-application" >
@@ -106,8 +104,3 @@
             </div>
 
         </div>
-
-
-        <?php include "includes/users/footer.php" ?>
-
-      

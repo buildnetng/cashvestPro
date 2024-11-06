@@ -1,4 +1,3 @@
-<?php include "includes/users/head.php" ?>
 <?php
 $cryptocurrencies = [
     'usdtt' => 'USDT',
@@ -108,8 +107,6 @@ $withdrawalFees = [
             </div>
 
         </div>
-
-        <?php include "includes/users/footer.php" ?>
         <script>
             $(document).ready(function() {
                 var withdrawalFees = <?= json_encode($withdrawalFees); ?>;
@@ -187,6 +184,3 @@ $withdrawalFees = [
                 });
             });
         </script>
-
-    </div>
-</body>

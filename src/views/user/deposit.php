@@ -1,4 +1,3 @@
-<?php include "includes/users/head.php" ?>
 <?php
 $cryptocurrencies = [
     'usdtt' => 'USDT',
@@ -208,10 +207,6 @@ $cryptocurrencies = [
             </div>
 
         </div>
-
-
-        <?php include "includes/users/footer.php" ?>
-
         <script>
             $(document).ready(function() {
                 let selectedCrypto = '';

@@ -1,5 +1,3 @@
-<?php include "includes/users/head.php" ?>
-
 <body class="application application-offset">
     <div class="container-fluid container-application" >
         <?php include "includes/users/header.php" ?>
@@ -95,9 +93,7 @@
                 </div>
             </div>
         </div>
-
-        <?php include "includes/users/footer.php" ?>
-
+        
         <script>
             document.getElementById('supportTicketForm').addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -107,5 +103,4 @@
                 this.reset();
             });
         </script>
-    </div>
-</body>
+  
