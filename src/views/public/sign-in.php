@@ -19,20 +19,20 @@
                                             <p class="text-muted mb-0">Sign in to your account to continue.</p>
                                         </div>
                                         <span class="clearfix"></span>
-                                        <form role="form">
+                                        <form id="signInForm">
                                             <div class="form-group">
-                                                <label class="form-control-label">Email address</label>
+                                                <label class="form-control-label" for="input-email">Email address</label>
                                                 <div class="input-group input-group-merge">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-user"></i></span>
                                                     </div>
-                                                    <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                                                    <input type="email" class="form-control" id="input-email" name="email" placeholder="name@example.com">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-4">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <div>
-                                                        <label class="form-control-label">Password</label>
+                                                        <label class="form-control-label" for="input-password">Password</label>
                                                     </div>
                                                     <div class="mb-2">
                                                         <a href="reset-password" class="small text-muted text-underline--dashed border-primary">Lost password?</a>
@@ -42,7 +42,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-key"></i></span>
                                                     </div>
-                                                    <input type="password" class="form-control" id="input-password" placeholder="Password">
+                                                    <input type="password" class="form-control" id="input-password" name="password" placeholder="Password">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">
                                                             <a href="#" data-toggle="password-text" data-target="#input-password">
@@ -52,11 +52,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mt-4"><button type="button" class="btn btn-sm btn-primary btn-icon rounded-pill">
-                                                    <span class="btn-inner--text">Sign in</span>
-                                                    <span class="btn-inner--icon"><i class="far fa-long-arrow-alt-right"></i></span>
-                                                </button></div>
+                                            <div class="mt-4">
+                                                <button type="submit" class="btn btn-sm btn-primary btn-icon rounded-pill">
+                                                    Grant access
+                                                </button>
+                                            </div>
+                                            <input type="hidden" name="login_request" value="1">
                                         </form>
+
                                     </div>
                                     <div class="card-footer px-md-5"><small>Not registered?</small>
                                         <a href="sign-up" class="small font-weight-bold">Create account</a>

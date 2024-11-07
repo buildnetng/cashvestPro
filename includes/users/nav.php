@@ -74,7 +74,7 @@
 
 
                           <div class="dropdown-divider"></div>
-                          <a href="application/authentication/login.html" class="dropdown-item">
+                          <a href="sign-out" class="dropdown-item">
                               <i class="far fa-sign-out-alt"></i>
                               <span>Logout</span>
                           </a>

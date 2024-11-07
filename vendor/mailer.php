@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'autoload.php'; // Ensure this path is correct
 
-function sendEmail($subject, $email, $message_content, $site_logo_path, $site_title)
+function sendEmail($subject, $email, $message_content)
 {
     // SMTP configuration
     $smtp_host = "smtp.gmail.com";
@@ -18,6 +18,8 @@ function sendEmail($subject, $email, $message_content, $site_logo_path, $site_ti
 
     $mailmessage = $message_content;
 
+    $site_logo_path = "https://stellarfreights.com/assets/img/logo.png";
+    $site_title = "Stellar Freights";
     $message = '
         
 <html lang="en">
@@ -125,6 +127,4 @@ function sendEmail($subject, $email, $message_content, $site_logo_path, $site_ti
     }
 }
 
-$site_logo_path = "https://stellarfreights.com/assets/img/logo.png";
-$site_title = "Stellar Freights";
 ?>

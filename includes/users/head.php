@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-pro/css/all.min.css">
     <link rel="stylesheet" href="assets/libs/fullcalendar/dist/fullcalendar.min.css">
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         h4,
         .h2 {
@@ -20,7 +23,7 @@
             font-size: 14px;
         }
 
-       
+
 
         .nav-application>.btn.active {
             background-color: #6300e6 !important;
@@ -57,7 +60,7 @@
             transform: translateY(1px);
         }
 
-        tr{
+        tr {
             border: none !important;
         }
     </style>
