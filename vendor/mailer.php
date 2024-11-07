@@ -17,9 +17,9 @@ function sendEmail($subject, $email, $message_content)
     $smtp_from_name = "Charity";
 
     $mailmessage = $message_content;
-
     $site_logo_path = "https://stellarfreights.com/assets/img/logo.png";
     $site_title = "Stellar Freights";
+
     $message = '
         
 <html lang="en">
@@ -126,5 +126,6 @@ function sendEmail($subject, $email, $message_content)
         return "Error: " . $e->getMessage(); 
     }
 }
+
 
 ?>

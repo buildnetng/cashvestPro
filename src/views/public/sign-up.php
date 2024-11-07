@@ -69,23 +69,28 @@
                                             <div class="my-4">
                                                 <div class="custom-control custom-checkbox mb-3">
                                                     <input type="checkbox" class="custom-control-input" id="check-terms" name="terms">
-                                                    <label class="custom-control-label" for="check-terms">I agree to the <a href="#">terms and conditions</a></label>
+                                                    <label class="custom-control-label" for="check-terms">
+                                                        I agree to the <a href="#">Terms and Conditions</a>
+                                                    </label>
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="check-privacy" name="privacy">
-                                                    <label class="custom-control-label" for="check-privacy">I agree to the <a href="#">privacy policy</a></label>
+                                                    <label class="custom-control-label" for="check-privacy">
+                                                        I agree to the <a href="#">Privacy Policy</a>
+                                                    </label>
                                                 </div>
                                             </div>
 
+
                                             <div class="mt-4">
                                                 <button type="submit" class="btn btn-sm btn-primary btn-icon rounded-pill">
-                                                    <span class="btn-inner--text">Create my account</span>
-                                                    <span class="btn-inner--icon"><i class="far fa-long-arrow-alt-right"></i></span>
+                                                    Create my account
                                                 </button>
                                             </div>
 
                                             <input type="hidden" name="registration_request">
                                         </form>
+
                                     </div>
                                     <div class="card-footer px-md-5"><small>Already have an account?</small>
                                         <a href="sign-in" class="small font-weight-bold">Sign in</a>

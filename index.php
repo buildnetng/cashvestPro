@@ -1,14 +1,12 @@
 <?php
-
 require 'src/router.php';
 
 // Initialize the Router
 $router = new Router();
 session_start();
-$_SESSION['user_logged_in'] = true;
 
-// Simulate authentication status (replace this with actual authentication logic)
-$authenticated = isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true;
+// Check if the user is authenticated
+$authenticated = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
 
 $routes = [
     'auth' => [
@@ -18,7 +16,7 @@ $routes = [
         '/reset-new-password' => 'src/views/public/reset-new-password.php',
         '/verify-email' => 'src/views/public/verify-email.php',
         '/verify-email-token' => 'src/views/public/verify-email-token.php',
-
+        '/sign-out' => 'src/views/public/sign-out.php'
     ],
 
     'user' => [
@@ -44,7 +42,6 @@ $routes = [
         '/admin' => 'src/views/admin/index.php',
         '/users' => 'src/views/admin/users.php',
         '/deposits' => 'src/views/admin/deposits.php',
-        '/authentication' => 'src/views/admin/auth/authentication.php',
         '/withdrawals' => 'src/views/admin/withdrawal.php',
         '/tickets' => 'src/views/admin/tickets.php',
         '/settings' => 'src/views/admin/settings.php',
@@ -70,24 +67,25 @@ foreach ($routes as $category => $routeGroup) {
 $requestUri = $_SERVER['REQUEST_URI'];
 
 // Routing logic
-if (in_array($requestUri, array_keys($routes['admin']))) { 
+if (in_array($requestUri, array_keys($routes['admin']))) {
     if ($authenticated) {
-        require_once __DIR__ . '/includes/admin/head.php';  
+        require_once __DIR__ . '/includes/admin/head.php';
         $router->route($requestUri);
-        require_once __DIR__ . '/includes/admin/footer.php'; 
+        require_once __DIR__ . '/includes/admin/footer.php';
     } else {
         header('Location: /sign-in');
         exit();
     }
 } elseif (in_array($requestUri, array_keys($routes['auth']))) {
+    // Allow access to auth routes without checking $authenticated
     require_once __DIR__ . '/includes/users/head.php';
     $router->route($requestUri);
     require_once __DIR__ . '/includes/users/footer.php';
 } elseif (in_array($requestUri, array_keys($routes['user']))) {
     if ($authenticated) {
-        require_once __DIR__ . '/includes/users/head.php';  
+        require_once __DIR__ . '/includes/users/head.php';
         $router->route($requestUri);
-        require_once __DIR__ . '/includes/users/footer.php'; 
+        require_once __DIR__ . '/includes/users/footer.php';
     } else {
         header('Location: /sign-in');
         exit();

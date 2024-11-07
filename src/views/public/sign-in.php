@@ -1,5 +1,4 @@
 <body class="application application-offset ready">
-
     <!-- Application container -->
     <div class="container-fluid container-application">
         <!-- Sidenav -->
@@ -15,7 +14,8 @@
                                 <div class="card shadow zindex-100 mb-0">
                                     <div class="card-body px-md-5 py-5">
                                         <div class="mb-5">
-                                            <h6 class="h3">Login</h6>
+                                            <h6 class="h3">Login </h6>
+
                                             <p class="text-muted mb-0">Sign in to your account to continue.</p>
                                         </div>
                                         <span class="clearfix"></span>
@@ -26,7 +26,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-user"></i></span>
                                                     </div>
-                                                    <input type="email" class="form-control" id="input-email" name="email" placeholder="name@example.com">
+                                                    <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-4">
@@ -42,7 +42,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-key"></i></span>
                                                     </div>
-                                                    <input type="password" class="form-control" id="input-password" name="password" placeholder="Password">
+                                                    <input type="password" class="form-control" id="input-password" placeholder="Password">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">
                                                             <a href="#" data-toggle="password-text" data-target="#input-password">

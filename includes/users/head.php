@@ -1,3 +1,4 @@
+<?php require_once 'config/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +13,15 @@
     <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-pro/css/all.min.css">
     <link rel="stylesheet" href="assets/libs/fullcalendar/dist/fullcalendar.min.css">
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+    <!-- iziToast Library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
     <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         h4,
         .h2 {
