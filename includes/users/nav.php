@@ -142,7 +142,7 @@
                           </a>
 
                           <div class="dropdown-divider"></div>
-                          <a href="#!" class="dropdown-item">
+                          <a href="sign-out" class="dropdown-item">
                               <i class="far fa-sign-out-alt"></i>
                               <span>Logout</span>
                           </a>

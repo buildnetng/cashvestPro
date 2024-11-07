@@ -26,13 +26,13 @@ function ajaxSubmitForm(formId, url, redirectUrl = null) {
                 icon: "fas fa-check-circle",
                 transitionIn: "fadeInDown",
                 transitionOut: "fadeOutUp",
-                onClosing: function () {
-                  if (redirectUrl) {
-                    window.location.href = redirectUrl;
-                  }
-                },
               });
             });
+            if (redirectUrl) {
+              setTimeout(() => {
+                window.location.href = redirectUrl;
+              }, 500); // Adjust the delay as needed
+            }
           }
         } else {
           if (response.messages && Array.isArray(response.messages)) {
@@ -45,14 +45,8 @@ function ajaxSubmitForm(formId, url, redirectUrl = null) {
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        if (jqXHR.responseText.indexOf("<html>") !== -1) {
-          showErrorToast(
-            "There was an error processing the request. Please check the server."
-          );
-        } else {
-          console.error("AJAX Error: " + textStatus + " - " + errorThrown);
-          showErrorToast("Failed to submit the form. Please try again later.");
-        }
+        console.error("AJAX Error: " + textStatus + " - " + errorThrown);
+        showErrorToast("Failed to submit the form. Please try again later.");
       },
       complete: function () {
         button.prop("disabled", false);
@@ -79,6 +73,5 @@ function showErrorToast(message) {
 
 $(document).ready(function () {
   ajaxSubmitForm("#signUpForm", "controllers/auth/form_processor.php", "home");
-
   ajaxSubmitForm("#signInForm", "controllers/auth/form_processor.php", "home");
 });

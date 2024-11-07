@@ -1,3 +1,5 @@
+<?php require_once 'config/session_manager.php'; ?>
+
 <body class="application application-offset ready">
     <!-- Application container -->
     <div class="container-fluid container-application">
@@ -19,14 +21,14 @@
                                             <p class="text-muted mb-0">Sign in to your account to continue.</p>
                                         </div>
                                         <span class="clearfix"></span>
-                                        <form id="signInForm">
+                                        <form id="signInForm" method="POST">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email address</label>
                                                 <div class="input-group input-group-merge">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-user"></i></span>
                                                     </div>
-                                                    <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                                                    <input type="email" class="form-control" id="input-email" name="email" placeholder="name@example.com">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-4">
@@ -42,7 +44,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-key"></i></span>
                                                     </div>
-                                                    <input type="password" class="form-control" id="input-password" placeholder="Password">
+                                                    <input type="password" class="form-control" id="input-password" name="password" placeholder="Password">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">
                                                             <a href="#" data-toggle="password-text" data-target="#input-password">
@@ -59,6 +61,7 @@
                                             </div>
                                             <input type="hidden" name="login_request" value="1">
                                         </form>
+
 
                                     </div>
                                     <div class="card-footer px-md-5"><small>Not registered?</small>

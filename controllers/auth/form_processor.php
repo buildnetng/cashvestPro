@@ -1,4 +1,6 @@
 <?php
+require_once "../../config/config.php";
+require_once "../../vendor/mailer.php";
 if (isset($_POST['registration_request']) && $_SERVER['REQUEST_METHOD'] == "POST") {
     session_start();
     $fullname = htmlspecialchars(trim($_POST['fullname'] ?? ''));
@@ -56,9 +58,6 @@ if (isset($_POST['registration_request']) && $_SERVER['REQUEST_METHOD'] == "POST
         echo json_encode(['status' => 'error', 'messages' => ['You must agree to our Privacy Policy']]);
         exit;
     }
-
-
-    require_once "../../config/config.php";
 
 
     $check_email = $conn->prepare("SELECT COUNT(*) FROM users WHERE JSON_EXTRACT(account_info, '$.email') = ?");
@@ -123,7 +122,6 @@ if (isset($_POST['registration_request']) && $_SERVER['REQUEST_METHOD'] == "POST
     $_SESSION['user_email'] = $email;
     $_SESSION['user_type'] = $usertype;
 
-    require_once "../../vendor/mailer.php";
     $subject = "Welcome to Our Platform";
     $message = "Hello $first_name,\n\nThank you for registering on our platform. We're excited to have you!";
 
@@ -134,69 +132,100 @@ if (isset($_POST['registration_request']) && $_SERVER['REQUEST_METHOD'] == "POST
     }
 
     echo json_encode(['status' => 'success', 'messages' => [$email_status]]);
-} else if (isset($_POST['login_request']) && $_SERVER['REQUEST_METHOD'] === "POST") {
-    session_start();
-    $email = htmlspecialchars(trim($_POST['email'] ?? ''));
-    $password = htmlspecialchars(trim($_POST['password'] ?? ''));
+}
 
-    // Input validation
+// Login Handler 
+else if (isset($_POST['login_request']) && $_SERVER['REQUEST_METHOD'] === "POST") {
+    session_start();
+
+    // Debugging: Check if POST data is received correctly
+    if (empty($_POST)) {
+        $response['messages'][] = 'No data received. Please check the form submission.';
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit;
+    }
+
+    // Sanitize inputs
+    $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $password = trim($_POST['password'] ?? '');
+
+    // Validate inputs
+    $errors = [];
+
     if (empty($email)) {
-        echo json_encode(['status' => 'error', 'messages' => ['Email is required']]);
-        exit;
+        $errors[] = 'Email is required';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(['status' => 'error', 'messages' => ['Invalid email format']]);
-        exit;
+        $errors[] = 'Invalid email format';
     }
 
     if (empty($password)) {
-        echo json_encode(['status' => 'error', 'messages' => ['Password is required']]);
-        exit;
+        $errors[] = 'Password is required';
     }
 
-    require_once "../../config/config.php";
-
-    $query = "SELECT * FROM users WHERE JSON_EXTRACT(account_info, '$.email') = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $hashed_password = $row['password'] ?? '';
-
-        // Check if hashed_password is not empty before verifying
-        if (!empty($hashed_password) && password_verify($password, $hashed_password)) {
-            $_SESSION['user_id'] = $row['id'];
-            $account_info = json_decode($row['account_info'], true);
-            $_SESSION['user_name'] = $account_info['firstname'] . " " . $account_info['lastname'];
-            $_SESSION['user_email'] = $account_info['email'];
-            $_SESSION['user_type'] = $row['usertype'];
-
-            // Update last login IP and date
-            $last_login_ip = $_SERVER['REMOTE_ADDR'];
-            $last_login_date = date('Y-m-d H:i:s');
-            $update_query = "UPDATE users SET last_login_ip = ?, last_login_date = ? WHERE id = ?";
-            $update_stmt = $conn->prepare($update_query);
-            $update_stmt->bind_param("ssi", $last_login_ip, $last_login_date, $_SESSION['user_id']);
-            $update_stmt->execute();
-            $update_stmt->close();
-
-            // Send login notification email
-            require_once "../../vendor/mailer.php";
-            $subject = "Login Notification - Welcome Back!";
-            $message = "Hello {$account_info['firstname']},\n\nWelcome back to our platform!";
-            sendEmail($account_info['email'], $subject, $message);
-
-            echo json_encode(['status' => 'success', 'messages' => ['Login successful']]);
-        } else {
-            echo json_encode(['status' => 'error', 'messages' => ['Invalid email or password']]);
-        }
+    // If validation fails, return the errors
+    if (!empty($errors)) {
+        $response['messages'] = $errors;
     } else {
-        echo json_encode(['status' => 'error', 'messages' => ['Invalid email or password']]);
+        try {
+            // Update query to search for the email inside the account_info JSON
+            $query = "SELECT * FROM users WHERE JSON_UNQUOTE(JSON_EXTRACT(account_info, '$.email')) = ?";
+            $stmt = $conn->prepare($query);
+
+            if ($stmt) {
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $account_info = json_decode($row['account_info'], true);
+                    $hashed_password = $account_info['password'] ?? '';
+
+                    // Verify the password using password_verify
+                    if (!empty($hashed_password) && password_verify($password, $hashed_password)) {
+                        // Set session variables
+                        $_SESSION['user_id'] = $row['user_id'];
+                        $_SESSION['user_name'] = $account_info['firstname'] . " " . $account_info['lastname'];
+                        $_SESSION['user_email'] = $account_info['email'];
+                        $_SESSION['user_type'] = $account_info['usertype'];
+
+                        // Update last login info
+                        $last_login_ip = $_SERVER['REMOTE_ADDR'];
+                        $last_login_date = date('Y-m-d H:i:s');
+
+                        $update_query = "UPDATE users SET last_login_ip = ?, last_login_date = ? WHERE user_id = ?";
+                        $update_stmt = $conn->prepare($update_query);
+                        $update_stmt->bind_param("ssi", $last_login_ip, $last_login_date, $_SESSION['user_id']);
+                        $update_stmt->execute();
+                        $update_stmt->close();
+
+                        // Send login notification
+                        $subject = "Login Notification - Welcome Back!";
+                        $message = "Hello {$account_info['firstname']},\n\nWelcome back to our platform!";
+                        sendEmail($account_info['email'], $subject, $message);
+
+                        $response['status'] = 'success';
+                        $response['messages'][] = 'Login successful';
+                        $response['redirect'] = 'dashboard.php';
+                    } else {
+                        $response['messages'][] = 'Invalid email or password';
+                    }
+                } else {
+                    $response['messages'][] = 'Invalid email or password';
+                }
+                $stmt->close();
+            } else {
+                $response['messages'][] = 'Database error occurred';
+            }
+        } catch (Exception $e) {
+            $response['messages'][] = 'An error occurred during login';
+            error_log("Login error: " . $e->getMessage());
+        }
     }
 
-    // Close database connections
-    $stmt->close();
-    $conn->close();
+    // Ensure proper content type and output response
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
 }

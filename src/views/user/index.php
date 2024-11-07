@@ -71,7 +71,7 @@
                         </div>
                         <!-- Additional info -->
                         <div class="align-items-center ml-4 d-inline-flex">
-                            <span class="h4 text-info mb-0 mr-2">Samuel Peter</span>
+                            <span class="h4 text-info mb-0 mr-2"><?= $_SESSION['user_email'] ?></span>
                         </div>
                         <!-- Optional link -->
                     </div>
