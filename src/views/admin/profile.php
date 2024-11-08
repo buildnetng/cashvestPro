@@ -1,6 +1,8 @@
+<?php require_once 'includes/admin/head.php'; ?>
+
 <body>
 	<div class="wrapper">
-		<?php include_once "includes/admin/header.php" ;?>
+		<?php include_once "includes/admin/header.php"; ?>
 
 
 		<main class="content">
@@ -50,86 +52,86 @@
 
 												<button type="submit" class="btn btn-primary">Save changes</button>
 
-						</form>
-											</div>
-
-									</div>
-
-
-
-								</div>
-								<div class="card mt-3">
-									<div class="card-header">
-
-										<h5 class="card-title mb-0">Password Info</h5>
-									</div>
-									<div class="card-body">
-										<form id="updatePasswordForm" method="POST">
-											<input type="hidden" name="user_id" value="<?= $user_id ?>">
-
-											<div class="mb-3">
-												<label for="password" class="form-label">Current password</label>
-												<input type="password" class="form-control" name="password"
-													id="password">
-											</div>
-											<div class="mb-3">
-												<label for="new_password" class="form-label">New password</label>
-												<input type="password" class="form-control" name="new_password"
-													id="new_password">
-											</div>
-											<div class="mb-3">
-												<label for="verify_new_password" class="form-label">Verify
-													password</label>
-												<input type="password" class="form-control" name="verify_new_password"
-													id="verify_new_password">
-											</div>
-											<button type="submit" class="btn btn-primary"
-												onclick="updatePassword()">Save change</button>
 										</form>
-
 									</div>
+
 								</div>
+
+
 
 							</div>
+							<div class="card mt-3">
+								<div class="card-header">
+
+									<h5 class="card-title mb-0">Password Info</h5>
+								</div>
+								<div class="card-body">
+									<form id="updatePasswordForm" method="POST">
+										<input type="hidden" name="user_id" value="<?= $user_id ?>">
+
+										<div class="mb-3">
+											<label for="password" class="form-label">Current password</label>
+											<input type="password" class="form-control" name="password"
+												id="password">
+										</div>
+										<div class="mb-3">
+											<label for="new_password" class="form-label">New password</label>
+											<input type="password" class="form-control" name="new_password"
+												id="new_password">
+										</div>
+										<div class="mb-3">
+											<label for="verify_new_password" class="form-label">Verify
+												password</label>
+											<input type="password" class="form-control" name="verify_new_password"
+												id="verify_new_password">
+										</div>
+										<button type="submit" class="btn btn-primary"
+											onclick="updatePassword()">Save change</button>
+									</form>
+
+								</div>
+							</div>
+
 						</div>
 					</div>
-
-				
 				</div>
+
+
+			</div>
 		</main>
 
-<script>
-	function updatePassword() {
-		$.ajax({
-			url: 'actions/update_password.php',
-			type: 'POST',
-			data: $('#updatePasswordForm').serialize(),
-			success: function (response) {
-				response = JSON.parse(response);
-				if (response.status === 'success') {
-					Swal.fire({
-						icon: 'success',
-						title: 'Password Updated!',
-						text: response.message
-					}).then(() => {
-						$('#updatePasswordForm')[0].reset(); // Reset form on success
-					});
-				} else {
-					Swal.fire({
-						icon: 'error',
-						title: 'Error',
-						text: response.message
-					});
-				}
-			},
-			error: function () {
-				Swal.fire({
-					icon: 'error',
-					title: 'Error',
-					text: 'An error occurred while processing your request. Please try again later.'
+		<script>
+			function updatePassword() {
+				$.ajax({
+					url: 'actions/update_password.php',
+					type: 'POST',
+					data: $('#updatePasswordForm').serialize(),
+					success: function(response) {
+						response = JSON.parse(response);
+						if (response.status === 'success') {
+							Swal.fire({
+								icon: 'success',
+								title: 'Password Updated!',
+								text: response.message
+							}).then(() => {
+								$('#updatePasswordForm')[0].reset(); // Reset form on success
+							});
+						} else {
+							Swal.fire({
+								icon: 'error',
+								title: 'Error',
+								text: response.message
+							});
+						}
+					},
+					error: function() {
+						Swal.fire({
+							icon: 'error',
+							title: 'Error',
+							text: 'An error occurred while processing your request. Please try again later.'
+						});
+					}
 				});
 			}
-		});
-	}
-</script>
-
+		</script>
+		<?php require_once 'includes/admin/footer.php'; ?>

@@ -15,6 +15,8 @@ $withdrawalFees = [
 ];
 ?>
 
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
 
     <div class="container-fluid container-application">
@@ -184,3 +186,4 @@ $withdrawalFees = [
                 });
             });
         </script>
+        <?php require_once 'includes/users/footer.php'; ?>

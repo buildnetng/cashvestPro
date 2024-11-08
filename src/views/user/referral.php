@@ -1,6 +1,8 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
 
-    <div class="container-fluid container-application" >
+    <div class="container-fluid container-application">
 
         <?php include "includes/users/header.php" ?>
 
@@ -52,7 +54,7 @@
                                     </tbody>
                                 </table>
 
-                            
+
                             </div>
                         </div>
                     </div>
@@ -72,4 +74,5 @@
                 alert("Copied the referral link: " + copyText.value);
             }
         </script>
-  
+
+        <?php require_once 'includes/users/footer.php'; ?>

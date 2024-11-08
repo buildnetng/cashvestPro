@@ -7,6 +7,8 @@ $cryptocurrencies = [
 ];
 ?>
 
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
     <style>
         #summaryList ul {
@@ -327,3 +329,5 @@ $cryptocurrencies = [
                 });
             });
         </script>
+
+        <?php require_once 'includes/users/footer.php'; ?>

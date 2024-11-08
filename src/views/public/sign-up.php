@@ -1,3 +1,5 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset ready">
 
     <!-- Application container -->
@@ -105,6 +107,4 @@
     </div>
 
 
-</body>
-
-</html>
+    <?php require_once 'includes/users/footer.php'; ?>

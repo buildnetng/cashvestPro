@@ -1,3 +1,5 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
 
     <div class="container-fluid container-application">
@@ -43,8 +45,8 @@
                                         </div>
                                     </div>
                                 </div>
-                               
-                               
+
+
                             </div>
                         </div>
                     </div>
@@ -83,7 +85,7 @@
                                 </form>
                             </div>
                         </div>
-                       
+
                         <div class="card">
                             <div class="card-header">
                                 <h5 class=" h6 mb-0">Danger zone</h5>
@@ -91,13 +93,13 @@
                             <div class="card-body">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-sm btn-danger rounded-pill" data-toggle="modal" data-target="#modal-delete-account">Delete account</button>
-                               
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-           
+
         </div>
 
-      
+        <?php require_once 'includes/users/footer.php'; ?>

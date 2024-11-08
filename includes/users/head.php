@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
         content="Purpose Application UI is the following chapter we've finished in order to create a complete and robust solution next to the already known Purpose Website UI.">
-    <meta name="author" content="Webpixels">
+    <meta name="author" content="Webpixels"> 
     <title>Purpose &ndash; Application UI Kit</title>
     <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
     <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-pro/css/all.min.css">
@@ -18,10 +18,6 @@
     <!-- iziToast Library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
     <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
-
-    <!-- Font Awesome Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>

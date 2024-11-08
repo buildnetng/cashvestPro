@@ -67,7 +67,7 @@
                               <i class="far fa-user"></i>
                               <span>My profile</span>
                           </a>
-                          <a href="application/account/settings.html" class="dropdown-item">
+                          <a href="setting" class="dropdown-item">
                               <i class="far fa-cog"></i>
                               <span>Settings</span>
                           </a>

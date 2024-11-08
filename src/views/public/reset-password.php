@@ -1,3 +1,5 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset ready">
 
     <!-- Application container -->

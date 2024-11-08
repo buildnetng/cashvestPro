@@ -1,6 +1,8 @@
+<?php require_once 'includes/admin/head.php'; ?>
+
 <body>
     <div class="wrapper">
-        <?php include_once "includes/admin/header.php" ;?>
+        <?php include_once "includes/admin/header.php"; ?>
         <style>
             input {
                 font-size: 12px !important;
@@ -124,3 +126,4 @@
 
             </div>
         </main>
+        <?php require_once 'includes/admin/footer.php'; ?>

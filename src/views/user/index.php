@@ -1,3 +1,5 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
 
 
@@ -71,7 +73,7 @@
                         </div>
                         <!-- Additional info -->
                         <div class="align-items-center ml-4 d-inline-flex">
-                            <span class="h4 text-info mb-0 mr-2"><?= $_SESSION['user_email'] ?></span>
+                            <span class="h4 text-info mb-0 mr-2">name</span>
                         </div>
                         <!-- Optional link -->
                     </div>
@@ -200,3 +202,5 @@
             </div>
         </div>
     </div>
+
+    <?php require_once 'includes/users/footer.php'; ?>

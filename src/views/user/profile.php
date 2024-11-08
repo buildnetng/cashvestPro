@@ -1,3 +1,5 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
 
     <div class="container-fluid container-application">
@@ -31,7 +33,7 @@
                                     <div class="media">
                                         <i class="far fa-cog"></i>
                                         <div class="media-body ml-3">
-                                            <a href="settings" class="stretched-link h6 mb-1">Settings</a>
+                                            <a href="setting" class="stretched-link h6 mb-1">Settings</a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,3 +139,5 @@
             </div>
 
         </div>
+
+        <?php require_once 'includes/users/footer.php'; ?>

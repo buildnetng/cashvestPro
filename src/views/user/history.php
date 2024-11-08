@@ -1,6 +1,8 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
-   
-    <div class="container-fluid container-application" >
+
+    <div class="container-fluid container-application">
 
         <?php include "includes/users/header.php" ?>
 
@@ -9,7 +11,7 @@
             <?php include "includes/users/nav.php" ?>
             <div class="page-content">
 
-              
+
 
                 <div class="row mt-4">
                     <div class="col-xl-12 col-md-12">
@@ -104,3 +106,5 @@
             </div>
 
         </div>
+
+        <?php require_once 'includes/users/footer.php'; ?>

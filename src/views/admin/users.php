@@ -1,6 +1,8 @@
+<?php require_once 'includes/admin/head.php'; ?>
+
 <body>
 	<div class="wrapper">
-		<?php include_once "includes/admin/header.php" ;?>
+		<?php include_once "includes/admin/header.php"; ?>
 
 
 		<main class="content">
@@ -33,39 +35,39 @@
 										<td><span class="badge badge-subtle-success me-2"> Active </span></td>
 										<td>
 											<div class="d-flex gap-3">
-											<button data-bs-toggle="modal" data-bs-target="#fundwallet"
-												class="btn btn-sm btn-warning  ">
-												<svg
-													xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-													viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
-													stroke-linecap="round" stroke-linejoin="round"
-													class="feather feather-edit">
-													<path
-														d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
-													</path>
-													<path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
-													</path>
-												</svg>
-											</button>
+												<button data-bs-toggle="modal" data-bs-target="#fundwallet"
+													class="btn btn-sm btn-warning  ">
+													<svg
+														xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+														viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+														stroke-linecap="round" stroke-linejoin="round"
+														class="feather feather-edit">
+														<path
+															d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+														</path>
+														<path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+														</path>
+													</svg>
+												</button>
 
-											<button  class="btn btn-sm btn-danger">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash">
-                                                                            <polyline points="3 6 5 6 21 6"></polyline>
-                                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                                                        </svg>
-                                            </button>
+												<button class="btn btn-sm btn-danger">
+													<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash">
+														<polyline points="3 6 5 6 21 6"></polyline>
+														<path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+													</svg>
+												</button>
 
-											<a href="send-mail" class="btn btn-sm btn-primary ">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail">
-                                                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                                                        <polyline points="22,6 12,13 2,6"></polyline>
-                                                                    </svg>
-                                                                </a>
+												<a href="send-mail" class="btn btn-sm btn-primary ">
+													<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail">
+														<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+														<polyline points="22,6 12,13 2,6"></polyline>
+													</svg>
+												</a>
 											</div>
-											
+
 
 										</td>
-										
+
 									</tr>
 
 								</tbody>
@@ -118,7 +120,7 @@
 								</div>
 							</div>
 						</div>
-			
+
 						<div>
 							<button type="submit" class="btn btn-primary w-md">Save changes</button>
 						</div>
@@ -127,13 +129,13 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 	</div>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
+		document.addEventListener("DOMContentLoaded", function() {
 			// Datatables Responsive
 			$("#datatables-reponsive").DataTable({
 				destroy: true,
@@ -141,3 +143,4 @@
 			});
 		});
 	</script>
+	<?php require_once 'includes/admin/footer.php'; ?>

@@ -1,3 +1,5 @@
+<?php require_once 'includes/admin/head.php'; ?>
+
 <body>
     <div class="wrapper">
         <?php include_once "includes/admin/header.php"; ?>
@@ -109,3 +111,4 @@
                 });
             });
         </script>
+        <?php require_once 'includes/admin/footer.php'; ?>

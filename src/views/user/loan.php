@@ -1,5 +1,7 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
-    <div class="container-fluid container-application" >
+    <div class="container-fluid container-application">
         <?php include "includes/users/header.php" ?>
 
         <div class="main-content position-relative">
@@ -101,3 +103,5 @@
                 alert('Loan application submitted successfully! We will review your application and contact you soon.');
             });
         </script>
+
+        <?php require_once 'includes/users/footer.php'; ?>

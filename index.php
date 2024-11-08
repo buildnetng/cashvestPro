@@ -1,97 +1,170 @@
 <?php
-require 'src/router.php';
 
-// Initialize the Router
-$router = new Router();
-session_start();
-
-// Check if the user is authenticated
-$authenticated = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
-
-$routes = [
-    'auth' => [
-        '/sign-in' => 'src/views/public/sign-in.php',
-        '/sign-up' => 'src/views/public/sign-up.php',
-        '/reset-password' => 'src/views/public/reset-password.php',
-        '/reset-new-password' => 'src/views/public/reset-new-password.php',
-        '/verify-email' => 'src/views/public/verify-email.php',
-        '/verify-email-token' => 'src/views/public/verify-email-token.php',
-        '/sign-out' => 'src/views/public/sign-out.php'
-    ],
-
-    'user' => [
-        '/' => 'src/views/user/index.php',
-        '/home' => 'src/views/user/index.php',
-        '/dashboard' => 'src/views/user/index.php',
-        '/analysis' => 'src/views/user/analysis.php',
-        '/deposit' => 'src/views/user/deposit.php',
-        '/history' => 'src/views/user/history.php',
-        '/info' => 'src/views/user/info.php',
-        '/loan' => 'src/views/user/loan.php',
-        '/marketplace' => 'src/views/user/marketplace.php',
-        '/settings' => 'src/views/user/settings.php',
-        '/profile' => 'src/views/user/profile.php',
-        '/referral' => 'src/views/user/referral.php',
-        '/service' => 'src/views/user/service.php',
-        '/shares' => 'src/views/user/shares.php',
-        '/withdrawal' => 'src/views/user/withdrawal.php',
-        '/support' => 'src/views/user/support.php',
-    ],
-
-    'admin' => [
-        '/admin' => 'src/views/admin/index.php',
-        '/users' => 'src/views/admin/users.php',
-        '/deposits' => 'src/views/admin/deposits.php',
-        '/withdrawals' => 'src/views/admin/withdrawal.php',
-        '/tickets' => 'src/views/admin/tickets.php',
-        '/settings' => 'src/views/admin/settings.php',
-        '/system' => 'src/views/admin/system.php',
-        '/send-mail' => 'src/views/admin/send-mail.php',
-        '/admin_profile' => 'src/views/admin/profile.php',
-    ],
-
-    // 404 route for non-existent URLs
-    '404' => [
-        '/404' => 'src/views/404.php',
-    ]
-];
-
-// Add all routes to the router
-foreach ($routes as $category => $routeGroup) {
-    foreach ($routeGroup as $path => $file) {
-        $router->addRoute($path, $file);
-    }
+if (isset($_SERVER["REDIRECT_URL"])) {
+    $url = basename($_SERVER["REDIRECT_URL"]);
+} else {
+    $url = "home";
 }
 
-// Get the current request URI
-$requestUri = $_SERVER['REQUEST_URI'];
+require_once "config/config.php";
 
-// Routing logic
-if (in_array($requestUri, array_keys($routes['admin']))) {
-    if ($authenticated) {
-        require_once __DIR__ . '/includes/admin/head.php';
-        $router->route($requestUri);
-        require_once __DIR__ . '/includes/admin/footer.php';
-    } else {
-        header('Location: /sign-in');
-        exit();
-    }
-} elseif (in_array($requestUri, array_keys($routes['auth']))) {
-    // Allow access to auth routes without checking $authenticated
-    require_once __DIR__ . '/includes/users/head.php';
-    $router->route($requestUri);
-    require_once __DIR__ . '/includes/users/footer.php';
-} elseif (in_array($requestUri, array_keys($routes['user']))) {
-    if ($authenticated) {
-        require_once __DIR__ . '/includes/users/head.php';
-        $router->route($requestUri);
-        require_once __DIR__ . '/includes/users/footer.php';
-    } else {
-        header('Location: /sign-in');
-        exit();
-    }
-} else {
-    // If the route is not found, show the 404 page
-    header("HTTP/1.0 404 Not Found");
-    $router->route('/404');
+switch ($url) {
+    case 'sign-in':
+        $title = 'Sign In';
+        require __DIR__ . '/src/views/public/sign-in.php';
+        break;
+
+    case 'sign-up':
+        $title = 'Sign Up';
+        require __DIR__ . '/src/views/public/sign-up.php';
+        break;
+
+    case 'reset-password':
+        $title = 'Reset Password';
+        require __DIR__ . '/src/views/public/reset-password.php';
+        break;
+
+    case 'reset-new-password':
+        $title = 'New Password';
+        require __DIR__ . '/src/views/public/reset-new-password.php';
+        break;
+
+    case 'verify-email':
+        $title = 'Verify Email';
+        require __DIR__ . '/src/views/public/verify-email.php';
+        break;
+
+    case 'verify-email-token':
+        $title = 'Verify Email Token';
+        require __DIR__ . '/src/views/public/verify-email-token.php';
+        break;
+
+    case 'sign-out':
+        $title = 'Sign Out';
+        require __DIR__ . '/src/views/public/sign-out.php';
+        break;
+        // user routes
+    case '':
+    case 'home':
+    case 'dashboard':
+        $title = 'User Dashboard';
+        require __DIR__ . '/src/views/user/index.php';
+        break;
+
+    case 'analysis':
+        $title = 'Analysis';
+        require __DIR__ . '/src/views/user/analysis.php';
+        break;
+
+    case 'deposit':
+        $title = 'Deposit';
+        require __DIR__ . '/src/views/user/deposit.php';
+        break;
+
+    case 'history':
+        $title = 'History';
+        require __DIR__ . '/src/views/user/history.php';
+        break;
+
+    case 'info':
+        $title = 'Information';
+        require __DIR__ . '/src/views/user/info.php';
+        break;
+
+    case 'loan':
+        $title = 'Loan';
+        require __DIR__ . '/src/views/user/loan.php';
+        break;
+
+    case 'marketplace':
+        $title = 'Marketplace';
+        require __DIR__ . '/src/views/user/marketplace.php';
+        break;
+
+    case 'setting':
+        $title = 'Setting';
+        require __DIR__ . '/src/views/user/setting.php';
+        break;
+
+    case 'profile':
+        $title = 'Profile';
+        require __DIR__ . '/src/views/user/profile.php';
+        break;
+
+    case 'referral':
+        $title = 'Referral';
+        require __DIR__ . '/src/views/user/referral.php';
+        break;
+
+    case 'service':
+        $title = 'Service';
+        require __DIR__ . '/src/views/user/service.php';
+        break;
+
+    case 'shares':
+        $title = 'Shares';
+        require __DIR__ . '/src/views/user/shares.php';
+        break;
+
+    case 'withdrawal':
+        $title = 'Withdrawal';
+        require __DIR__ . '/src/views/user/withdrawal.php';
+        break;
+
+    case 'support':
+        $title = 'Support';
+        require __DIR__ . '/src/views/user/support.php';
+        break;
+
+        // Admin routes
+    case 'admin':
+        $title = 'Admin Dashboard';
+        require __DIR__ . '/src/views/admin/index.php';
+        break;
+
+    case 'users':
+        $title = 'User Management';
+        require __DIR__ . '/src/views/admin/users.php';
+        break;
+
+    case 'deposits':
+        $title = 'Deposits';
+        require __DIR__ . '/src/views/admin/deposits.php';
+        break;
+
+    case 'withdrawals':
+        $title = 'Withdrawals';
+        require __DIR__ . '/src/views/admin/withdrawal.php';
+        break;
+
+    case 'tickets':
+        $title = 'Support Tickets';
+        require __DIR__ . '/src/views/admin/tickets.php';
+        break;
+
+    case 'settings':
+        $title = 'Admin Settings';
+        require __DIR__ . '/src/views/admin/settings.php';
+        break;
+
+    case 'system':
+        $title = 'System Management';
+        require __DIR__ . '/src/views/admin/system.php';
+        break;
+
+    case 'send-mail':
+        $title = 'Send Mail';
+        require __DIR__ . '/src/views/admin/send-mail.php';
+        break;
+
+    case 'admin_profile':
+        $title = 'Admin Profile';
+        require __DIR__ . '/src/views/admin/profile.php';
+        break;
+
+    default:
+        $title = 'Page not found';
+        http_response_code(404);
+        require __DIR__ . '/src/views/404.php';
+        break;
 }

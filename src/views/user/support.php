@@ -1,5 +1,7 @@
+<?php require_once 'includes/users/head.php'; ?>
+
 <body class="application application-offset">
-    <div class="container-fluid container-application" >
+    <div class="container-fluid container-application">
         <?php include "includes/users/header.php" ?>
 
         <div class="main-content position-relative">
@@ -93,7 +95,7 @@
                 </div>
             </div>
         </div>
-        
+
         <script>
             document.getElementById('supportTicketForm').addEventListener('submit', function(e) {
                 e.preventDefault();
@@ -102,5 +104,6 @@
                 // Optionally, reset the form
                 this.reset();
             });
-        </script>
-  
+        </script> 
+        
+        <?php require_once 'includes/users/footer.php'; ?>
