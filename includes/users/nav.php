@@ -146,6 +146,17 @@
                               <i class="far fa-sign-out-alt"></i>
                               <span>Logout</span>
                           </a>
+                          <?php if ($user['account_info']['usertype'] !== "user") { ?>
+                              <a href="<?= ($user['account_info']['usertype'] !== "user") ? "admin" : "" ?>" class="dropdown-item">
+                                  <i class="far fa-sign-out-alt"></i>
+                                  <span>Switch to admin</span>
+                              </a>
+                          <?php } ?>
+
+
+                          <a class="dropdown-item" href="admin"><i
+                                  class="text-success bx bxs-user-badge font-size-16 align-middle me-1"></i> <span key="t-lock-screen"></span></a>
+
                       </div>
                   </li>
               </ul>

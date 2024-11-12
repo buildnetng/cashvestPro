@@ -60,6 +60,7 @@
                                                 </button>
                                             </div>
                                             <input type="hidden" name="login_request" value="1">
+                                            <input type="hidden" name="redirect" value="<?= $_GET['rd'] ?? '' ?>">
                                         </form>
 
 

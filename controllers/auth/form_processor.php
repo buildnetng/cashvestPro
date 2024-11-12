@@ -138,17 +138,20 @@ if (isset($_POST['registration_request']) && $_SERVER['REQUEST_METHOD'] == "POST
 else if (isset($_POST['login_request']) && $_SERVER['REQUEST_METHOD'] === "POST") {
     session_start();
 
-    // Debugging: Check if POST data is received correctly
-    if (empty($_POST)) {
-        $response['messages'][] = 'No data received. Please check the form submission.';
-        header('Content-Type: application/json');
-        echo json_encode($response);
-        exit;
-    }
-
     // Sanitize inputs
     $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
     $password = trim($_POST['password'] ?? '');
+    $pageRedirect = $_POST['redirect'] ?? '';
+
+    if (empty($email)) {
+        echo json_encode(['status' => 'error', 'messages' => ['Email address required']]);
+        exit;
+    }
+
+    if (empty($password)) {
+        echo json_encode(['status' => 'error', 'messages' => ['Password required']]);
+        exit;
+    }
 
     // Validate inputs
     $errors = [];
@@ -185,6 +188,7 @@ else if (isset($_POST['login_request']) && $_SERVER['REQUEST_METHOD'] === "POST"
                     // Verify the password using password_verify
                     if (!empty($hashed_password) && password_verify($password, $hashed_password)) {
                         // Set session variables
+                        $_SESSION['online'] = true;
                         $_SESSION['user_id'] = $row['user_id'];
                         $_SESSION['user_name'] = $account_info['firstname'] . " " . $account_info['lastname'];
                         $_SESSION['user_email'] = $account_info['email'];
@@ -207,7 +211,8 @@ else if (isset($_POST['login_request']) && $_SERVER['REQUEST_METHOD'] === "POST"
 
                         $response['status'] = 'success';
                         $response['messages'][] = 'Login successful';
-                        $response['redirect'] = 'dashboard.php';
+                        $response['redirect'] = $pageRedirect;
+
                     } else {
                         $response['messages'][] = 'Invalid email or password';
                     }

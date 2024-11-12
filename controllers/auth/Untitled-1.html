@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: #f8f9fa; margin: 0; padding: 20px; min-height: 100vh;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px; padding: 20px;">
+            <!-- Investment Card -->
+            <div
+                style="background-color: white; border-radius: 15px; padding: 2rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                <h5>Buy your first stock with as little as $1</h5>
+                <p style="color: #6c757d;">approx ₦1,751.48</p>
+
+                <div
+                    style="background-color: #f8f0ff; border-radius: 20px; padding: 2rem; margin: 1.5rem 0; text-align: center;">
+                    <img src="/api/placeholder/200/200" alt="Investment Illustration"
+                        style="max-width: 100%; height: auto;">
+                </div>
+
+                <h4 style="margin-top: 1.5rem;">Most Popular</h4>
+                <p style="color: #6c757d;">The most commonly traded stocks in the Chipper community</p>
+
+                <!-- Stock Items -->
+                <div onclick="showStockDetails('BRK.B', 'Berkshire Hathaway Inc. Hld B', 463.51, 'Berkshire Hathaway Inc. is a multinational conglomerate holding company headquartered in Omaha, Nebraska. The company wholly owns GEICO, Duracell, Dairy Queen, BNSF, Lubrizol, Fruit of the Loom, Helzberg Diamonds, Long & Foster, FlightSafety International, Shaw Industries, Pampered Chef, Forest River, and NetJets, and also owns significant minority holdings in public companies Pilot Flying J, Kraft Heinz, American Express, Moody\'s Analytics, Globe Life, and Apple.')"
+                    style="display: flex; align-items: center; padding: 1rem; border-bottom: 1px solid #eee; cursor: pointer; transition: all 0.3s ease;">
+                    <div
+                        style="width: 40px; height: 40px; border-radius: 50%; margin-right: 1rem; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #8e44ef;">
+                        BRK</div>
+                    <div style="flex-grow: 1;">
+                        <h6 style="margin-bottom: 0;">Berkshire Hathaway Inc. Hld B</h6>
+                    </div>
+                    <div style="text-align: right; display: flex; align-items: center;">
+                        <span style="font-size: 1rem;">$463.51</span>
+                        <i class="fas fa-chevron-right" style="margin-left: 0.5rem;"></i>
+                    </div>
+                </div>
+
+                <div onclick="showStockDetails('AAPL', 'Apple Inc.', 175.04, 'Apple Inc. is an American multinational technology company headquartered in Cupertino, California. Apple is the world\'s largest technology company by revenue, with US$394.3 billion in 2022 revenue. As of March 2023, Apple is the world\'s biggest company by market capitalization. As of June 2022, Apple is the fourth-largest personal computer vendor by unit sales and the second-largest mobile phone manufacturer.')"
+                    style="display: flex; align-items: center; padding: 1rem; border-bottom: 1px solid #eee; cursor: pointer; transition: all 0.3s ease;">
+                    <div
+                        style="width: 40px; height: 40px; border-radius: 50%; margin-right: 1rem; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #8e44ef;">
+                        AAPL</div>
+                    <div style="flex-grow: 1;">
+                        <h6 style="margin-bottom: 0;">Apple Inc.</h6>
+                    </div>
+                    <div style="text-align: right; display: flex; align-items: center;">
+                        <span style="font-size: 1rem;">$175.04</span>
+                        <i class="fas fa-chevron-right" style="margin-left: 0.5rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Details Modal -->
+    <div id="stockModal"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 1000; transform: translateY(100%); transition: transform 0.3s ease-out; overflow-y: auto;">
+        <div
+            style="padding: 1rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; background: white; position: sticky; top: 0; z-index: 1001;">
+            <i class="fas fa-times" onclick="hideStockDetails()" style="cursor: pointer;"></i>
+            <span id="stockSymbol"></span>
+            <span class="read-more"></span>
+        </div>
+
+        <div style="padding: 1rem;">
+            <div id="modalStockLogo"
+                style="width: 40px; height: 40px; border-radius: 50%; margin-right: 1rem; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #8e44ef;">
+            </div>
+            <h2 id="companyName">Company Name</h2>
+            <div id="stockPrice" style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;">$0.00</div>
+            <div id="stockDescription" style="max-height: 100px; overflow: hidden; transition: all 0.3s ease;"></div>
+            <a id="readMoreBtn" style="color: #8e44ef; text-decoration: none; font-weight: 500; cursor: pointer;">Read
+                More</a>
+        </div>
+
+        <div style="width: 100%; height: 300px; padding: 1rem; margin-top: 2rem;">
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript"
+                    src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                        {
+                            "symbols": [["Apple", "AAPL|1D"]],
+                                "chartOnly": false,
+                                    "width": "100%",
+                                        "height": "100%",
+                                            "locale": "en",
+                                                "colorTheme": "light",
+                                                    "autosize": true,
+                                                        "showVolume": false,
+                                                            "showMA": false,
+                                                                "hideDateRanges": false,
+                                                                    "hideMarketStatus": false,
+                                                                        "hideSymbolLogo": false,
+                                                                            "scalePosition": "right",
+                                                                                "scaleMode": "Normal",
+                                                                                    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                                                                                        "fontSize": "10",
+                                                                                            "noTimeScale": false,
+                                                                                                "valuesTracking": "1",
+                                                                                                    "changeMode": "price-and-percent",
+                                                                                                        "chartType": "area",
+                                                                                                            "lineWidth": 2,
+                                                                                                                "lineType": 0,
+                                                                                                                    "dateRanges": [
+                                                                                                                        "1d|1",
+                                                                                                                        "1m|30",
+                                                                                                                        "3m|60",
+                                                                                                                        "12m|1D",
+                                                                                                                        "60m|1W",
+                                                                                                                        "all|1M"
+                                                                                                                    ]
+                        }
+                    </script>
+            </div>
+        </div>
+
+        <div style="padding: 1rem;">
+            <button onclick="showBuyForm()"
+                style="background-color: #ff1a8b; color: white; border: none; border-radius: 25px; padding: 1rem; width: calc(100% - 2rem); margin: 1rem; font-weight: 500; font-size: 1.1rem; transition: all 0.3s ease;">Buy
+                Stock</button>
+        </div>
+    </div>
+
+    <!-- Buy Form Modal -->
+    <div id="buyFormModal"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; z-index: 1002;">
+        <div style="background: white; padding: 2rem; border-radius: 15px; width: 90%; max-width: 500px;">
+            <h4 style="margin-bottom: 1.5rem;">Buy Stock</h4>
+            <form id="stockPurchaseForm">
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="amount">Amount to invest ($)</label>
+                    <input type="number" class="form-control" id="amount" min="1" step="0.01" required
+                        style="border-radius: 10px; padding: 0.8rem;">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select class="form-control" id="paymentMethod" required
+                        style="border-radius: 10px; padding: 0.8rem;">
+                        <option value="">Select payment method</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="card">Credit/Debit Card</option>
+                    </select>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+                    <button type="button" class="btn btn-secondary" onclick="hideBuyForm()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Confirm Purchase</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showStockDetails(symbol, name, price, description) {
+            const modal = document.getElementById('stockModal');
+            document.getElementById('stockSymbol').textContent = symbol;
+            document.getElementById('companyName').textContent = name;
+            document.getElementById('stockPrice').textContent = `$${price.toFixed(2)}`;
+            document.getElementById('modalStockLogo').textContent = symbol.split('.')[0];
+            document.getElementById('stockDescription').textContent = description;
+            modal.style.transform = 'translateY(0)';
+        }
+
+        function hideStockDetails() {
+            const modal = document.getElementById('stockModal');
+            modal.style.transform = 'translateY(100%)';
+        }
+
+        function showBuyForm() {
+            document.getElementById('buyFormModal').style.display = 'flex';
+        }
+
+        function hideBuyForm() {
+            document.getElementById('buyFormModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

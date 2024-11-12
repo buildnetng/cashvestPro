@@ -28,7 +28,7 @@
 </div>
 </div>
 
-<script src="/assets_admin/js/app.js"></script>
+<script src="assets_admin/js/app.js"></script>
 
 <script>
 	document.addEventListener("DOMContentLoaded", function() {

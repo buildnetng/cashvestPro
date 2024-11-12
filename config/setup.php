@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';  // Include the configuration settings (database connection)
+require_once 'config.php';  
 
 // Fetch site setup settings from the database
 $sql = "SELECT * FROM setup LIMIT 1";

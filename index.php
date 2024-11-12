@@ -7,6 +7,7 @@ if (isset($_SERVER["REDIRECT_URL"])) {
 }
 
 require_once "config/config.php";
+require_once "controllers/session_manager.php";
 
 switch ($url) {
     case 'sign-in':
@@ -115,6 +116,10 @@ switch ($url) {
         $title = 'Support';
         require __DIR__ . '/src/views/user/support.php';
         break;
+    case 'upload':
+        $title = 'Upload files';
+        require __DIR__ . '/src/views/user/upload.php';
+        break;
 
         // Admin routes
     case 'admin':
@@ -160,6 +165,11 @@ switch ($url) {
     case 'admin_profile':
         $title = 'Admin Profile';
         require __DIR__ . '/src/views/admin/profile.php';
+        break;
+
+    case 'test':
+        $title = 'test page';
+        require __DIR__ . '/test.php';
         break;
 
     default:
