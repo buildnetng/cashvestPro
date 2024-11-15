@@ -109,7 +109,12 @@ $(document).ready(function () {
   ajaxSubmitForm("#signInForm", "controllers/auth/form_processor.php", "home");
   ajaxSubmitForm(
     "#depositForm",
-    "controllers/user/deposit_processor.php",
+    "controllers/user/post_processor.php",
     "upload"
+  );
+  ajaxSubmitForm(
+    "#updateForm",
+    "controllers/user/post_processor.php",
+    "home"
   );
 });

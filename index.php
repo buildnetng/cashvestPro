@@ -8,6 +8,8 @@ if (isset($_SERVER["REDIRECT_URL"])) {
 
 require_once "config/config.php";
 require_once "controllers/session_manager.php";
+include "controllers/user/user.php"; 
+
 
 switch ($url) {
     case 'sign-in':

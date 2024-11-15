@@ -1,6 +1,7 @@
 <?php
 require_once "../../config/config.php";
 require_once "../../vendor/mailer.php";
+
 if (isset($_POST['registration_request']) && $_SERVER['REQUEST_METHOD'] == "POST") {
     session_start();
     $fullname = htmlspecialchars(trim($_POST['fullname'] ?? ''));
